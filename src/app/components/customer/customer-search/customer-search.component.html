@@ -1,1 +1,25 @@
-<p>customer-search works!</p>
+<div class="search">
+  <mat-card>
+    <mat-card-subtitle>Search Customer</mat-card-subtitle>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="filterControl" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end gap-2">
+          <button mat-raised-button color="accent" (click)="onReload()">
+            Reload
+          </button>
+          <button mat-raised-button color="primary" (click)="onCreate()">
+            Create
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

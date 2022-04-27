@@ -1,1 +1,5 @@
-<p>customer-update-page works!</p>
+<app-customer-upsert
+  *ngIf="customer"
+  (upsert)="onUpdate($event)"
+  [isLoading]="isLoading"
+  [customer]="customer"></app-customer-upsert>

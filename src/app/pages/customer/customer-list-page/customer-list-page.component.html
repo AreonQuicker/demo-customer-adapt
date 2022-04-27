@@ -1,1 +1,8 @@
-<p>customer-list-page works!</p>
+<app-customer-search
+  (filterChange)="onFilterChange($event)"
+  (reload)="onReload()"></app-customer-search>
+<app-customer-list
+  class="mt-4"
+  [rows]="this.searchRows"
+  (delete)="onDelete($event)"
+  (update)="onUpdate($event)"></app-customer-list>

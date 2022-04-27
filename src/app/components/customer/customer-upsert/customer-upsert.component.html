@@ -1,1 +1,82 @@
-<p>customer-upsert works!</p>
+<mat-card>
+  <mat-card-subtitle
+    >{{ isUpdate ? 'Update' : 'Create' }} Customer</mat-card-subtitle
+  >
+  <mat-card-content>
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="form">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>First Name</mat-label>
+                <input
+                  matInput
+                  placeholder="First Name"
+                  formControlName="firstName" />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Last Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  formControlName="lastName" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" />
+                <mat-error
+                  *ngIf="
+                    form.get('email')?.hasError('email') &&
+                    !form.get('email')?.hasError('required')
+                  ">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Phone" formControlName="phone" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Invoice Total</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  placeholder="Invoice Total"
+                  formControlName="invoiceTotal" />
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <div class="d-flex gap-2">
+          <button mat-raised-button color="accent" (click)="onBack()">
+            Back
+          </button>
+          <button
+            [disabled]="!form.valid || isLoading"
+            mat-raised-button
+            color="primary"
+            (click)="onUpsert()">
+            {{ isUpdate ? 'Update' : 'Create' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

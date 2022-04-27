@@ -4,12 +4,12 @@ import { tick } from '../../utils/utils';
 import { LoadService } from '../../state-services/load.service';
 
 @Directive({
-  selector: '[BaseComponent]',
+  selector: '[appBaseComponent]',
 })
-export class BaseComponent implements OnDestroy {
+export class BaseComponentDirective implements OnDestroy {
   private _isLoading = false;
-  protected subscription: Subscription | null = null;
-  protected get isLoading(): boolean {
+  protected subscription: Subscription = new Subscription();
+  public get isLoading(): boolean {
     return this._isLoading;
   }
   protected set isLoading(value: boolean) {

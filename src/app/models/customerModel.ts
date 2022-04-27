@@ -7,4 +7,10 @@ export interface CustomerModel {
   invoiceTotal: number;
 }
 
-sdsds
+export interface Result<T> {
+  message: string;
+  errors: string[];
+  errorCode: string;
+  data: T;
+  failed: boolean;
+}
